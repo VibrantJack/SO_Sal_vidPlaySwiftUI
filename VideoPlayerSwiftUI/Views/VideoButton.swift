@@ -10,14 +10,27 @@ import SwiftUI
 struct VideoButton: View {
     var buttonImage: String
     var size: CGFloat = 50
+    var interactable: Bool = true
     var onClick: (() -> Void)? = nil
     let color: Color = .white
+    let uninteractableColor: Color = .gray
     var body: some View {
-        Button(){
-            onClick?()
-        } label: {
+        if interactable{
+            Button(){
+                onClick?()
+            } label: {
+                ZStack{
+                    Circle().fill(color).shadow(radius: 10)
+                        .frame(width: size, height: size)
+                    Image(buttonImage)
+                        .frame(width: size, height: size)
+                }
+            }
+        }
+        else
+        {
             ZStack{
-                Circle().fill(color).shadow(radius: 10)
+                Circle().fill(uninteractableColor).shadow(radius: 10)
                     .frame(width: size, height: size)
                 Image(buttonImage)
                     .frame(width: size, height: size)

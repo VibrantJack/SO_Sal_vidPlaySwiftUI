@@ -26,7 +26,7 @@ struct ContentView: View {
                 Text("No Videos")
             } else {
                 VStack{
-                    VideoPlayerFrame(videoData: videoListLoader.Videos[viewingIndex],onNext: OnNext, onPrev: OnPrevious)
+                    VideoPlayerFrame(videoData: videoListLoader.Videos[viewingIndex],onNext: OnNext, onPrev: OnPrevious, prevAvailable: viewingIndex > 0, nextAvailable: viewingIndex < videoListLoader.Videos.count - 1)
                     VideoDescription(data: videoListLoader.Videos[viewingIndex])
                 }
             }
