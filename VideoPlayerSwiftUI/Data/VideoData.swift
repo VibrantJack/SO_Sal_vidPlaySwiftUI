@@ -20,4 +20,8 @@ struct VideoData : Hashable, Codable, Identifiable {
     var description : String
     var publishedAt : String
     var author : AuthorData
+    
+    func getPublishedDate() -> Date? {
+        return ISO8601DateFormatter().date(from: publishedAt)
+    }
 }

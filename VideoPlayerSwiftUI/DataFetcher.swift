@@ -19,12 +19,17 @@ final class VideoListLoader : ObservableObject{
         error = nil
         isLoading = true
         
+        // Start by fetching our data
         do {
             let (data, _) = try await URLSession.shared.data(from: remoteUrl)
             Videos = try JSONDecoder().decode([VideoData].self, from: data)
         } catch {
             self.error = error
         }
+        
+        // Order our data by date!
+        Videos = Videos.sorted(by: {$0.getPublishedDate() ?? Date.distantPast > $1.getPublishedDate() ?? Date.distantPast})
+        
         
         isLoading = false
     }
