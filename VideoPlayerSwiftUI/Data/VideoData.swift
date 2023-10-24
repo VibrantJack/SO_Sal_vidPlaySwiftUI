@@ -9,18 +9,18 @@ import Foundation
 import SwiftUI
 
 struct AuthorData : Hashable, Codable, Identifiable {
-    var id : String
-    var name : String
+    var id : String = ""
+    var name : String = ""
 }
 
 struct VideoData : Hashable, Codable, Identifiable {
-    var id :String
-    var title :String
-    var hlsURL : String
-    var fullURL : String
-    var description : String
-    var publishedAt : String
-    var author : AuthorData
+    var id :String = ""
+    var title :String = ""
+    var hlsURL : String = ""
+    var fullURL : String = ""
+    var description : String = ""
+    var publishedAt : String = ""
+    var author : AuthorData = AuthorData()
     
     func getPublishedDate() -> Date? {
         return ISO8601DateFormatter().date(from: publishedAt)

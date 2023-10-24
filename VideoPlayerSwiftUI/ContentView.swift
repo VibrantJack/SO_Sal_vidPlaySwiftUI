@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var videoListLoader = VideoListLoader()
     @State private var viewingIndex = 0;
+    
     var body: some View {
         VStack{
             if let error = videoListLoader.error {
@@ -26,7 +27,7 @@ struct ContentView: View {
                 Text("No Videos")
             } else {
                 VStack{
-                    VideoPlayerFrame(videoData: videoListLoader.Videos[viewingIndex],onNext: OnNext, onPrev: OnPrevious, prevAvailable: viewingIndex > 0, nextAvailable: viewingIndex < videoListLoader.Videos.count - 1)
+                    VideoPlayerFrame(onNext: OnNext, onPrev: OnPrevious, prevAvailable: viewingIndex > 0, nextAvailable: viewingIndex < videoListLoader.Videos.count - 1, videoData: videoListLoader.Videos[viewingIndex])
                     VideoDescription(data: videoListLoader.Videos[viewingIndex])
                 }
             }
