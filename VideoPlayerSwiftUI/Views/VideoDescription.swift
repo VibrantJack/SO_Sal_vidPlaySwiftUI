@@ -17,12 +17,12 @@ struct VideoDescription: View {
                 Text(data?.author.name ?? "Unknown Author")
                     .font(.subheadline)
                 Spacer()
-                Text(data?.description ?? "Unknown Description?")
+                Text(data?.getLocalizedDescription() ?? "Unknown Description?")
             }
         }.padding()
     }
 }
 
 #Preview {
-    VideoDescription(data: VideoData(id: "test", title: "title", hlsURL: "bla", fullURL: "bla", description: "Some Description Lorem Epsum Etc stuff stuff stuff\n hahha", publishedAt: "1994", author: AuthorData(id: "testAuthor", name: "Frank thingamajig")))
+    VideoDescription(data: VideoData(id: "test", title: "title", hlsURL: "bla", fullURL: "bla", description: "Some *Description* Lorem Epsum Etc stuff stuff stuff\n hahha", publishedAt: "1994", author: AuthorData(id: "testAuthor", name: "Frank thingamajig")))
 }

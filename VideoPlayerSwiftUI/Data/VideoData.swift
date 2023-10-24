@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct AuthorData : Hashable, Codable, Identifiable {
     var id : String
@@ -23,5 +24,9 @@ struct VideoData : Hashable, Codable, Identifiable {
     
     func getPublishedDate() -> Date? {
         return ISO8601DateFormatter().date(from: publishedAt)
+    }
+    
+    func getLocalizedDescription() -> LocalizedStringKey {
+        return LocalizedStringKey(description)
     }
 }
