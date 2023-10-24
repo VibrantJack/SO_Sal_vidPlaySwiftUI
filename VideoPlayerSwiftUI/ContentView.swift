@@ -26,8 +26,8 @@ struct ContentView: View {
                 Text("No Videos")
             } else {
                 VStack{
-                    VideoPlayerFrame(videoData: videoListLoader.Videos[0])
-                    VideoDescription(data: videoListLoader.Videos[0])
+                    VideoPlayerFrame(videoData: videoListLoader.Videos[viewingIndex],onNext: OnNext, onPrev: OnPrevious)
+                    VideoDescription(data: videoListLoader.Videos[viewingIndex])
                 }
             }
         }.onAppear(){
@@ -35,6 +35,14 @@ struct ContentView: View {
                 await videoListLoader.LoadData()
             }
         }
+    }
+    
+    func OnPrevious(){
+        viewingIndex = max(viewingIndex-1,0)
+    }
+    
+    func OnNext(){
+        viewingIndex = min(viewingIndex+1,videoListLoader.Videos.count - 1)
     }
     
 }
