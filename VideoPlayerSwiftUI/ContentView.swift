@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var videos = [VideoData]()
+    @State private var viewingIndex = 0;
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            VideoPlayerFrame()
+            VideoDescription()
+        }
     }
 }
 

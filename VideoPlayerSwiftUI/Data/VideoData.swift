@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+struct AuthorData : Hashable, Codable, Identifiable {
+    var id : String
+    var name : String
+}
+
+struct VideoData : Hashable, Codable, Identifiable {
+    var id :String
+    var title :String
+    var hlsURL : String
+    var fullURL : String
+    var description : String
+    var publishedAt : String
+    var author : AuthorData
+}
